@@ -13,14 +13,16 @@
         android:id="@+id/RegTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:typeface="sans"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Name"
-        android:id="@+id/NameLabel"
+        android:id="@+id/RegNameLabel"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/RegTitle"
         android:layout_alignParentStart="true"
@@ -32,13 +34,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Age"
-        android:id="@+id/AgeLabel"
-        android:layout_below="@+id/NameLabel"
+        android:id="@+id/RegAgeLabel"
+        android:layout_below="@+id/RegNameLabel"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="25dp"
-        android:layout_alignEnd="@+id/NameLabel"
-        android:layout_alignRight="@+id/NameLabel"
+        android:layout_alignEnd="@+id/RegNameLabel"
+        android:layout_alignRight="@+id/RegNameLabel"
         android:textSize="20dp" />
 
     <TextView
@@ -46,9 +48,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Gender"
-        android:id="@+id/GenderLabel"
+        android:id="@+id/RegGenderLabel"
         android:layout_marginTop="23dp"
-        android:layout_below="@+id/AgeLabel"
+        android:layout_below="@+id/RegAgeLabel"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:textSize="20dp" />
@@ -56,7 +58,7 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/GenderLabel"
+        android:layout_alignTop="@+id/RegGenderLabel"
         android:layout_centerHorizontal="true"
         android:id="@+id/GenderradioGroup">
 
@@ -64,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Male"
-            android:id="@+id/MaleButton"
+            android:id="@+id/RegMaleButton"
             android:layout_gravity="center_horizontal"
             android:checked="false" />
 
@@ -72,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
-            android:id="@+id/FemaleButton"
+            android:id="@+id/RegFemaleButton"
             android:checked="false" />
 
     </RadioGroup>
@@ -81,50 +83,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Interest"
-        android:id="@+id/InterestLabel"
-        android:layout_below="@+id/GenderradioGroup"
-        android:layout_alignParentStart="true"
+        android:text="Interest(s)"
+        android:id="@+id/RegInterestLabel"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/RegInterestGroup1"
         android:layout_alignParentLeft="true"
-        android:textSize="20dp" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/RegInterestGroup"
-        android:layout_alignTop="@+id/InterestLabel"
-        android:layout_alignStart="@+id/RegTitle"
-        android:layout_alignLeft="@+id/RegTitle"/>
+        android:id="@+id/RegInterestGroup1"
+        android:layout_below="@+id/RegPhoneNo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="43dp"
+        android:layout_alignLeft="@+id/GenderradioGroup"
+        android:layout_alignStart="@+id/GenderradioGroup" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Phone"
-        android:id="@+id/PhoneLabel"
-        android:layout_marginTop="23dp"
+        android:id="@+id/RegPhoneLabel"
         android:textSize="20dp"
-        android:layout_below="@+id/InterestLabel"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_below="@+id/GenderradioGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/PhoneNo"
-        android:layout_alignTop="@+id/PhoneLabel"
-        android:layout_alignStart="@+id/RegInterestGroup"
-        android:layout_alignLeft="@+id/RegInterestGroup"/>
+        android:id="@+id/RegPhoneNo"
+        android:layout_below="@+id/GenderradioGroup"
+        android:layout_alignLeft="@+id/RegAgeText"
+        android:layout_alignStart="@+id/RegAgeText"
+        android:layout_alignRight="@+id/RegAgeText"
+        android:layout_alignEnd="@+id/RegAgeText" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp">
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_width="wrap_content"
@@ -144,18 +150,70 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/NameText"
-        android:layout_alignTop="@+id/NameLabel"
+        android:id="@+id/RegNameText"
+        android:layout_alignTop="@+id/RegNameLabel"
         android:layout_alignStart="@+id/RegTitle"
-        android:layout_alignLeft="@+id/RegTitle"/>
+        android:layout_alignLeft="@+id/RegTitle"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/AgeText"
-        android:layout_alignTop="@+id/AgeLabel"
-        android:layout_alignStart="@+id/NameText"
-        android:layout_alignLeft="@+id/NameText"/>
+        android:id="@+id/RegAgeText"
+        android:layout_alignTop="@+id/RegAgeLabel"
+        android:layout_alignStart="@+id/RegNameText"
+        android:layout_alignLeft="@+id/RegNameText"
+        android:layout_alignRight="@+id/RegNameText"
+        android:layout_alignEnd="@+id/RegNameText" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RegInterestGroup2"
+        android:layout_below="@+id/RegInterestGroup1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/RegInterestGroup1"
+        android:layout_alignStart="@+id/RegInterestGroup1"
+        android:layout_marginTop="10dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RegNameBox"
+        android:checked="false"
+        android:layout_alignBottom="@+id/RegNameText"
+        android:layout_alignRight="@+id/RegPrivacyLabel"
+        android:layout_alignEnd="@+id/RegPrivacyLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hide from others"
+        android:id="@+id/RegPrivacyLabel"
+        android:layout_above="@+id/RegNameText"
+        android:layout_alignRight="@+id/RegInterestGroup1"
+        android:layout_alignEnd="@+id/RegInterestGroup1" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RegAgeBox"
+        android:checked="false"
+        android:layout_alignBottom="@+id/RegAgeText"
+        android:layout_alignLeft="@+id/RegNameBox"
+        android:layout_alignStart="@+id/RegNameBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RegGenderBox"
+        android:layout_above="@+id/RegPhoneNo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:checked="false" />
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package hk.ust.cse.comp4521.eventmaker;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -22,7 +23,7 @@ import java.util.Map;
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
 import hk.ust.cse.comp4521.eventmaker.User.UserRegistration;
 
-public class Welcome extends ActionBarActivity {
+public class Welcome extends Activity {
 
     private GestureDetector mDetector;
     private int page;

@@ -1,5 +1,6 @@
 package hk.ust.cse.comp4521.eventmaker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.Spinner;
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
 
 
-public class SearchMain extends ActionBarActivity {
+public class SearchMain extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

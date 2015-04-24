@@ -42,7 +42,11 @@ public class UserModel {
         allInfo.put("Age", prefs.getInt("Age", -1));
         allInfo.put("Gender", prefs.getString("Gender", ""));
         allInfo.put("Interest", prefs.getString("Interest", ""));
+        allInfo.put("Interest2", prefs.getString("Interest2", ""));
         allInfo.put("Phone", prefs.getString("Phone", ""));
+        allInfo.put("NamePrivacy", prefs.getString("NamePrivacy",""));
+        allInfo.put("AgePrivacy", prefs.getString("AgePrivacy",""));
+        allInfo.put("GenderPrivacy", prefs.getString("GenderPrivacy",""));
 
 
         return allInfo;
@@ -61,7 +65,11 @@ public class UserModel {
         prefed.putInt("Age", (Integer) data.get("Age"));
         prefed.putString("Gender", (String) data.get("Gender"));
         prefed.putString("Interest", (String) data.get("Interest"));
+        prefed.putString("Interest2", (String) data.get("Interest2"));
         prefed.putString("Phone", (String) data.get("Phone"));
+        prefed.putString("NamePrivacy", (String) data.get("NamePrivacy"));
+        prefed.putString("AgePrivacy", (String) data.get("AgePrivacy"));
+        prefed.putString("GenderPrivacy", (String) data.get("GenderPrivacy"));
         prefed.commit();
     }
 

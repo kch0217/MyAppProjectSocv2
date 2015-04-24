@@ -5,6 +5,7 @@
     <string name="action_about">About</string>
     <string name="title_activity_user_registration">User Registration</string>
     <string-array name="interest_array">
+        <item></item>
         <item>Football</item>
         <item>Basketball</item>
         <item>Badminton</item>
