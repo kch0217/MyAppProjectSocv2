@@ -27,6 +27,8 @@ import hk.ust.cse.comp4521.eventmaker.SearchMain;
 
 public class UserRegistration extends Activity {
 
+    private boolean modify;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +57,17 @@ public class UserRegistration extends Activity {
         EditText name = (EditText) findViewById(R.id.RegNameText);
         name.requestFocus();
 
+        modify = false;
         Log.i(null, "onCreate of UserRegistration");
 
         if (getIntent().getIntExtra("Context", -1) == Constants.MODIFY_REG){
-
+            modify = true;
             loadInfo();
 
 
         }
+        UserServer myserver = new UserServer();
+        myserver.updateInternalState();
     }
 
 
@@ -132,7 +137,8 @@ public class UserRegistration extends Activity {
         data.put("NamePrivacy", (((CheckBox) findViewById(R.id.RegNameBox)).isChecked())?"Check":"Uncheck");
         data.put("AgePrivacy", (((CheckBox) findViewById(R.id.RegAgeBox)).isChecked())?"Check":"Uncheck");
         data.put("GenderPrivacy", (((CheckBox) findViewById(R.id.RegGenderBox)).isChecked())?"Check":"Uncheck");
-        UserModel.getUserModel().saveAllInfo(data);
+
+        UserModel.getUserModel().saveAllInfo(data, modify);
     }
 
     public void clearInfo(){

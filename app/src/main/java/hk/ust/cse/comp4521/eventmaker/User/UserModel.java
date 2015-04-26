@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class UserModel {
 
+    private static String TAG = "UserModel";
     private Context context;
     private static UserModel usermodel = new UserModel();
     private SharedPreferences prefs;
@@ -58,7 +59,24 @@ public class UserModel {
         return tel.getLine1Number();
     }
 
-    public void saveAllInfo(Map<String, Object> data){
+    public String getPhoneNumberFromSP(){
+        return prefs.getString("Phone", null);
+    }
+
+    public void saveAllInfo(Map<String, Object> data, boolean modify){
+
+        String _id = null;
+        if (modify){
+            UserServer myserver = new UserServer();
+            UserInfo userInfo = myserver.UserInfoArrayList.get(myserver.calcID(prefs.getString("Phone", null)));
+
+            if (userInfo != null) {
+                _id = userInfo._id;
+
+            }
+            else
+                modify = false;
+        }
 
         SharedPreferences.Editor prefed = prefs.edit();
         prefed.putString("Name", (String)data.get("Name"));
@@ -71,6 +89,29 @@ public class UserModel {
         prefed.putString("AgePrivacy", (String) data.get("AgePrivacy"));
         prefed.putString("GenderPrivacy", (String) data.get("GenderPrivacy"));
         prefed.commit();
+
+        UserInfo2 newInfo = new UserInfo2();
+        newInfo.Name = (String) data.get("Name");
+        newInfo.Age = (Integer) data.get("Age");
+        newInfo.Gender =  (String) data.get("Gender");
+        newInfo.Interest = (String) data.get("Interest");
+        newInfo.Interest2 =  (String) data.get("Interest2");
+        newInfo.Phone = (String) data.get("Phone");
+        newInfo.NamePrivacy = (String) data.get("NamePrivacy");
+        newInfo.AgePrivacy = (String) data.get("AgePrivacy");
+        newInfo.GenderPrivacy = (String) data.get("GenderPrivacy");
+        UserServer myserver = new UserServer();
+        if (modify){
+            Log.i(TAG,"Modifying");
+            newInfo._id = _id;
+            myserver.updateUser(newInfo);
+        }
+        else {
+            Log.i(TAG, "Adding");
+            myserver.addAUser(newInfo);
+        }
+
+
     }
 
     public String getInterest(){
@@ -95,8 +136,13 @@ public class UserModel {
 
 
     public void wipeAlldata(){
+
+        UserServer myServer = new UserServer();
+        myServer.deleteUser(prefs.getString("Phone", null));
         SharedPreferences.Editor prefed =prefs.edit();
         prefed.clear();
         prefed.commit();
+
+
     }
 }

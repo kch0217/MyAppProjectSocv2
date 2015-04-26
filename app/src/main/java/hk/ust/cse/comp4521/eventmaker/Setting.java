@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
 import hk.ust.cse.comp4521.eventmaker.User.UserRegistration;
+import hk.ust.cse.comp4521.eventmaker.User.UserServer;
 
 
 public class Setting extends Activity {
@@ -46,6 +47,7 @@ public class Setting extends Activity {
         {
             checkBox.setChecked(false);
         }
+
     }
 
 

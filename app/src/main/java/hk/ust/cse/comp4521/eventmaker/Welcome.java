@@ -22,6 +22,7 @@ import java.util.Map;
 
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
 import hk.ust.cse.comp4521.eventmaker.User.UserRegistration;
+import hk.ust.cse.comp4521.eventmaker.User.UserServer;
 
 public class Welcome extends Activity {
 
@@ -36,6 +37,9 @@ public class Welcome extends Activity {
 
         UserModel usermodel = UserModel.getUserModel();
         usermodel.setContext(Welcome.this);
+        //fetch user database
+        UserServer myServer = new UserServer();
+        myServer.updateInternalState();
         Map<String, Object> data = usermodel.getAllInfo();
 
         if (!((String) data.get("Name")).equals("")) {
@@ -47,6 +51,8 @@ public class Welcome extends Activity {
                     .add(R.id.container, new Fragment1(), "WelcomeFragment1")
                     .commit();
         }
+
+
         
 
         mDetector = new GestureDetector(this, new swipeWelcome());
