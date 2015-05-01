@@ -23,6 +23,7 @@ import java.util.Map;
 
 import hk.ust.cse.comp4521.eventmaker.Constants;
 import hk.ust.cse.comp4521.eventmaker.R;
+import hk.ust.cse.comp4521.eventmaker.SearchFrag;
 import hk.ust.cse.comp4521.eventmaker.SearchMain;
 
 public class UserRegistration extends Activity {
@@ -199,15 +200,16 @@ public class UserRegistration extends Activity {
                     return;
                 }
                 saveInfo();
+                UserModel.getUserModel().saveSetting(true);
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
                 if (getIntent().getIntExtra("Context", -1) ==Constants.NEW_REGISTRATION) {
 
-                    Intent intent = new Intent(getApplicationContext(), SearchMain.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchFrag.class);
                     startActivity(intent);
                     finish();
                 }
                 else if (getIntent().getIntExtra("Context",-1)==Constants.MODIFY_REG){
-                    Intent intent = new Intent(getApplicationContext(), SearchMain.class);
+                    Intent intent = new Intent(getApplicationContext(), SearchFrag.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP );
                     startActivity(intent);
                     finish();

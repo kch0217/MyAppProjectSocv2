@@ -43,7 +43,7 @@ public class Welcome extends Activity {
         Map<String, Object> data = usermodel.getAllInfo();
 
         if (!((String) data.get("Name")).equals("")) {
-            Intent intent = new Intent(this, SearchMain.class);
+            Intent intent = new Intent(this, SearchFrag.class);
             startActivity(intent);
         }
         if (savedInstanceState == null) {
@@ -184,7 +184,7 @@ public class Welcome extends Activity {
                             startActivity(intent);
                         }
                         else{
-                            Intent intent = new Intent(getActivity(), SearchMain.class);
+                            Intent intent = new Intent(getActivity(), SearchFrag.class);
                             startActivity(intent);
                         }
 

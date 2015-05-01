@@ -3,7 +3,7 @@
     package="hk.ust.cse.comp4521.eventmaker" >
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +30,11 @@
         <activity
             android:name=".Setting"
             android:label="@string/title_activity_setting" >
+        </activity>
+        <activity
+            android:name=".SearchFrag"
+            android:label="@string/title_activity_search_frag"
+            android:theme="@style/SearchTheme">
         </activity>
     </application>
 
