@@ -1,5 +1,6 @@
 package hk.ust.cse.comp4521.eventmaker.User;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class UserServer {
     private static String TAG = "UserServer";
     public static List<UserInfo> UserInfoArrayList;
     public static UserInfo returnInfo;
+    public static UserInfo searchUser;
 
     public static List<UserInfo> getAllUsers(){
         updateInternalState();
@@ -30,7 +32,7 @@ public class UserServer {
             public void success(ArrayList<UserInfo> userInfos, Response response) {
                 UserInfoArrayList = userInfos;
                 Log.w(TAG, "Succeed to fetch all data! The size of Array is " + UserInfoArrayList.size());
-                if (!(UserInfoArrayList.size() > 0)){
+                if (!(UserInfoArrayList.size() > 0)) {
                     Log.w(TAG, "Failed to fetch data!");
                 }
             }
@@ -86,7 +88,7 @@ public class UserServer {
             @Override
             public void success(UserInfo userInfo, Response response) {
                 Log.i(TAG, "succeed to get a user");
-                if (userInfo != null){
+                if (userInfo != null) {
 
                     returnInfo = userInfo;
                 }
@@ -102,14 +104,27 @@ public class UserServer {
     }
 
     public static void deleteUser(String phone){
+        updateInternalState();
+        UserInfo temp = null;
+
+
         if (UserInfoArrayList == null || phone ==null)
             return;
         if (UserInfoArrayList.size() == 0)
             return;
         int target = calcID(phone);
-        if (target == -1)
-            return;
-        RestClient.get().deleteUser(UserInfoArrayList.get(target)._id, new Callback<Response>() {
+        String deleteId = null;
+        if (target == -1){
+            temp = searchAUser(phone);
+            if (temp == null)
+                return;
+            deleteId = temp._id;
+        }
+        else
+
+           deleteId = UserInfoArrayList.get(target)._id;
+
+        RestClient.get().deleteUser(deleteId, new Callback<Response>() {
             @Override
             public void success(Response response, Response response2) {
                 Log.i(TAG, "Response " + response.getBody().toString());
@@ -123,10 +138,32 @@ public class UserServer {
         updateInternalState();
     }
 
+    public static UserInfo searchAUser(String phone){
+        searchUser = null;
+        RestClient.get().searchUser(phone, new Callback<UserInfo>() {
+            @Override
+            public void success(UserInfo userInfo, Response response) {
+                Log.i(TAG, "succeed to search a user");
+                if (userInfo != null) {
+
+                    searchUser = userInfo;
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                Log.i(TAG, "fail to get a user");
+            }
+        });
+        return searchUser;
+    }
+
     public static int calcID(String phone){
         int target = -1;
 
         for (int i = 0; i < UserInfoArrayList.size(); i++){
+            Log.i(TAG, UserInfoArrayList.get(i).Phone);
             if (UserInfoArrayList.get(i).Phone.equals(phone)){
                 target = i;
                 break;
@@ -134,5 +171,8 @@ public class UserServer {
         }
         return target;
     }
+
+
+
 
 }

@@ -27,4 +27,7 @@ public interface userServerAPI {
 
     @PUT("/users/{id}")
     void updateUser(@Body UserInfo2 userInfo, @Path("id") String id, Callback<Response> callback);
+
+    @GET("/users/{Phone}")
+    void searchUser(@Path("Phone") String Phone, Callback<UserInfo> callback);
 }

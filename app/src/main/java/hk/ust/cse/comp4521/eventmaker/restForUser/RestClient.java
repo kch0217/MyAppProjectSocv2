@@ -16,6 +16,11 @@ public class RestClient {
         setupRestClient();
     }
 
+    public static void restart(){
+        restClient = null;
+        setupRestClient();
+    }
+
     private RestClient() {}
 
     public static userServerAPI get() {

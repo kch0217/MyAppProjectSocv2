@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
+import hk.ust.cse.comp4521.eventmaker.User.UserServer;
 
 
 public class SearchFrag extends ActionBarActivity implements ActionBar.TabListener {
@@ -184,6 +185,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
+
             return fragment;
         }
 
@@ -198,6 +200,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
 
             ListView list = (ListView) rootView.findViewById(R.id.searchselectionList);
             list.setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_single_choice, activity));
+
             return rootView;
         }
     }

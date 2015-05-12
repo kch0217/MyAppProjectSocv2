@@ -40,6 +40,8 @@ public class Setting extends Activity {
         Button  modifyButton = (Button) findViewById(R.id.SettingInfoButton);
         modifyButton.setOnClickListener(new pressButton());
 
+
+
         if (((Boolean) UserModel.getUserModel().getSetting().get("allowPassiveSearching")) == true){
             checkBox.setChecked(true);
         }
@@ -47,6 +49,9 @@ public class Setting extends Activity {
         {
             checkBox.setChecked(false);
         }
+
+        UserServer myServer  = new UserServer();
+        myServer.updateInternalState();
 
     }
 
