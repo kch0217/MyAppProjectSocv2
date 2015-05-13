@@ -1,5 +1,6 @@
 package hk.ust.cse.comp4521.eventmaker.Event;
 
+import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -19,6 +20,13 @@ public class Event_T{
     String testid;
 
     public Event_T(){}
+
+    public static double locationDetection(Location one, Location two){
+        double latdif=one.getLatitude()-two.getLatitude();
+        double longdif=one.getLongitude()-two.getLongitude();
+        double result=Math.sqrt(latdif*latdif+longdif*longdif);
+        return result;
+    };
     public void createEvent(){
         Event2 test=new Event2();
       restClientEvent.get().addEvent(test, new Callback<retrofit.client.Response>() {

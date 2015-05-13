@@ -17,6 +17,8 @@ public class Event2 extends Event {
     }
 
     public Event2(double lon,double lat,int num,String interest){
+        _id="";
+        _ownerid="";
         longitude=lon;
         latitude=lat;
         numOfPart=num;
