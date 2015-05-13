@@ -16,5 +16,10 @@ public class Constants {
     public static final String PORT_NUM = "3000";
     public static final String SERVER_URL = "http://"+SERVER_ID+":"+PORT_NUM;
 
+    public static final String KSERVER_ID="143.89.209.166";
+    public static final String KPORT_NUM="3000";
+    public static final String KSERVER_URL="http://"+KSERVER_ID+":"+KPORT_NUM;
+
+    public static final String MAP_KEY="AIzaSyCP9l_atibNsB7jmMxV2bPC_Olrn34ihx0";
 
 }

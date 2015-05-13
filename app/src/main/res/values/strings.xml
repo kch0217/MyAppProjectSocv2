@@ -29,8 +29,10 @@
     <string name="title_activity_setting">Setting</string>
     <string name="title_activity_search_frag">Search Your Activity</string>
 
-
+    <string name="no_location_detected">No location detected. Make sure location is enabled on the device.</string>
     <string name="title_section1">Active Search</string>
     <string name="title_section2">Passive Search</string>
+    <string name="title_activity_event__test">Event_Test</string>
+    <string name="title_activity_map">Map</string>
 
 </resources>
