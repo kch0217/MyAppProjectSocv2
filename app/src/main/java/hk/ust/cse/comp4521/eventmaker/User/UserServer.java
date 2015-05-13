@@ -76,6 +76,7 @@ public class UserServer {
     }
 
     public static UserInfo getAUser(String phone){
+        updateInternalState();
         if (UserInfoArrayList == null || phone == null)
             return null;
         if (UserInfoArrayList.size() == 0)
