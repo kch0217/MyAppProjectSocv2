@@ -5,11 +5,11 @@ package hk.ust.cse.comp4521.eventmaker.Event;
  */
 public class Event {
     public String _id;
-    String _ownerid;
+    public String _ownerid;
     public String interest;
     public double longitude;
     public double latitude;
-    int numOfPart; //default as 3
+    public int numOfPart; //default as 3
 
     public Event(){    }
 
