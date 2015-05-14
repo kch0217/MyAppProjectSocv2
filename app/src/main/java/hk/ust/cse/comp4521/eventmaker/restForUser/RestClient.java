@@ -2,8 +2,6 @@ package hk.ust.cse.comp4521.eventmaker.restForUser;
 
 import com.squareup.okhttp.OkHttpClient;
 
-import java.util.concurrent.Executor;
-
 import hk.ust.cse.comp4521.eventmaker.Constants;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -34,18 +32,9 @@ public class RestClient {
                 .setEndpoint(Constants.SERVER_URL)
                 .setErrorHandler(new RetrofitErrorHandler())
                 .setClient(new OkClient(new OkHttpClient()))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setExecutors(new executeRest(), new executeRest()) ;
+                .setLogLevel(RestAdapter.LogLevel.FULL);
 
         RestAdapter restAdapter = builder.build();
         restClient = restAdapter.create(userServerAPI.class);
-    }
-
-    private static class executeRest implements Executor{
-
-        @Override
-        public void execute(Runnable runnable) {
-            new Thread(runnable).start();
-        }
     }
 }

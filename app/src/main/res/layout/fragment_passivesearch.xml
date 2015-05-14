@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/passivesearchFragment_Instruction"
-        android:choiceMode="multipleChoice"
+        android:choiceMode="singleChoice"
         android:layout_above="@+id/passiveSearchEnabler" />
 
     <TextView
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toggle Passive Search"
+        android:text="Enable Passive Search"
         android:id="@+id/passiveSearchEnabler"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

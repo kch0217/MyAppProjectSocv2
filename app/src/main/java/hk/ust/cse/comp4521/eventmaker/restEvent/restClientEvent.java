@@ -24,7 +24,6 @@ public class restClientEvent {
                 .setErrorHandler(new retErrorHandler())
                 .setClient(new OkClient(new OkHttpClient()))
                 .setLogLevel(RestAdapter.LogLevel.FULL);
-
         RestAdapter restAdapter=builder.build();
         restClient=restAdapter.create(eventApi.class);
     }

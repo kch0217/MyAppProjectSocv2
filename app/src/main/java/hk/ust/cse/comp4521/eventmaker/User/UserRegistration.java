@@ -21,7 +21,6 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
-import hk.ust.cse.comp4521.eventmaker.About;
 import hk.ust.cse.comp4521.eventmaker.Constants;
 import hk.ust.cse.comp4521.eventmaker.R;
 import hk.ust.cse.comp4521.eventmaker.SearchFrag;
@@ -88,9 +87,8 @@ public class UserRegistration extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            Intent intent = new Intent(this, About.class);
-            startActivity(intent);
+        if (id == R.id.action_settings) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

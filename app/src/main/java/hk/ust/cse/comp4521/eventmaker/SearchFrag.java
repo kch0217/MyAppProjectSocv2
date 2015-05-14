@@ -1,15 +1,8 @@
 package hk.ust.cse.comp4521.eventmaker;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
@@ -26,17 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import hk.ust.cse.comp4521.eventmaker.PassiveSearch.SearchHelper;
-import hk.ust.cse.comp4521.eventmaker.User.UserInfo;
 import hk.ust.cse.comp4521.eventmaker.User.UserModel;
 import hk.ust.cse.comp4521.eventmaker.User.UserServer;
 
@@ -52,8 +37,6 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
-
-
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -121,10 +104,6 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             Intent intent = new Intent(getApplicationContext(), Setting.class);
             startActivity(intent);
             return true;
-        }
-        if (id ==R.id.action_about){
-            Intent intent = new Intent(this, About.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -220,32 +199,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             activity = getResources().getStringArray(R.array.interest_array2);
 
             ListView list = (ListView) rootView.findViewById(R.id.searchselectionList);
-            list.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_single_choice, activity));
-
-            UserServer userServer = new UserServer();
-            UserServer.updateInternalState();
-//            try {
-//                Thread.currentThread().sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-            ProgressDialog progress= ProgressDialog.show(getActivity(), "Loading", "Downloading important info from the Internet.", true);;
-            while (UserServer.UserInfoArrayList ==null){
-
-            }
-
-            UserInfo user = userServer.getAUser(UserModel.getUserModel().getPhoneNumberFromSP());
-//            try {
-//                Thread.currentThread().sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-            while (UserServer.returnInfo == null){
-
-            }
-            progress.dismiss();
-
-//            Log.i(ARG_SECTION_NUMBER, UserServer.returnInfo._id);
+            list.setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_single_choice, activity));
 
             return rootView;
         }
@@ -258,10 +212,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
          */
         private static final String ARG_SECTION_NUMBER = "passive search";
         private static String [] activity;
-        private ListAdapter adapter;
-        private ArrayList<String> tempPassive;
-        private boolean enableButton;
-        private Button enablepassive;
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -283,63 +234,11 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             View rootView = inflater.inflate(R.layout.fragment_passivesearch, container, false);
             activity = getResources().getStringArray(R.array.interest_array2);
 
-            final ListView list = (ListView) rootView.findViewById(R.id.passivesearchselectionList);
-            adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_single_choice, activity);
-
-            list.setAdapter(adapter);
-            tempPassive = new ArrayList<>();
-            enableButton = false;
-
-
-//            list.setSelection(((ArrayAdapter)list.getAdapter()).getPosition(UserModel.getUserModel().getInterest()));
-
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    String selected = (String) list.getItemAtPosition(i);
-                    Log.i(ARG_SECTION_NUMBER, selected + " selected!");
-                    if (tempPassive.contains(selected)) {
-                        tempPassive.remove(selected);
-                    }
-                    else
-                        tempPassive.add(selected);
-                }
-
-            });
-
-            enablepassive = (Button) rootView.findViewById(R.id.passiveSearchEnabler);
-            enablepassive.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), SearchHelper.class);
-                    if (enableButton){
-
-                        enableButton = false;
-                        getActivity().stopService(intent);
-
-                        return;
-                    }
-                    String result = "Selected interests:";
-                    for (int i= 0 ; i< tempPassive.size(); i++){
-                        result = result +" "+ tempPassive.get(i);
-                    }
-                    Log.i(ARG_SECTION_NUMBER, result);
-
-
-                    intent.putStringArrayListExtra("Interest", tempPassive);
-                    getActivity().startService(intent);
-
-                    enableButton = true;
-
-
-                }
-            });
-
+            ListView list = (ListView) rootView.findViewById(R.id.passivesearchselectionList);
+            list.setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_single_choice, activity));
+            list.setSelection(((ArrayAdapter)list.getAdapter()).getPosition(UserModel.getUserModel().getInterest()));
             return rootView;
         }
-
-
-
     }
 
 }

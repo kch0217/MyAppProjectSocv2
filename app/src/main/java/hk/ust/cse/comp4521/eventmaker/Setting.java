@@ -72,8 +72,7 @@ public class Setting extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, About.class);
-            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

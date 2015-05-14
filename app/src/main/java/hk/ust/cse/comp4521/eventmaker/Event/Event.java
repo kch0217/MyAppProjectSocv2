@@ -4,12 +4,12 @@ package hk.ust.cse.comp4521.eventmaker.Event;
  * Created by User on 5/3/2015.
  */
 public class Event {
-    public String _id;
-    public String _ownerid;
-    public String interest;
-    public double longitude;
-    public double latitude;
-    public int numOfPart; //default as 3
+    String _id;
+    String _ownerid;
+    String interest;
+    double longitude;
+    double latitude;
+    int numOfPart; //default as 3
 
     public Event(){    }
 

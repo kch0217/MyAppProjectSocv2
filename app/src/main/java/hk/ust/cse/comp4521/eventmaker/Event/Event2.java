@@ -10,7 +10,7 @@ public class Event2 extends Event {
     public Event2(){
         longitude=0.0;
         latitude=0.0;
-        numOfPart=3;
+        numOfPart=0;
         interest="";
         _id="";
         _ownerid="";
