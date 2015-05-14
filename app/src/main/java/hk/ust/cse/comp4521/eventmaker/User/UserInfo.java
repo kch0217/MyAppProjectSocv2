@@ -1,9 +1,11 @@
 package hk.ust.cse.comp4521.eventmaker.User;
 
+import java.io.Serializable;
+
 /**
 * Created by Ken on 25/4/2015.
 */
-public class UserInfo implements Cloneable {
+public class UserInfo implements Cloneable, Serializable {
     public String _id;
     public String Name;
     public int Age;

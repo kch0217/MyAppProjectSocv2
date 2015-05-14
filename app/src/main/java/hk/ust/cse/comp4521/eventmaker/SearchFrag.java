@@ -8,6 +8,7 @@ import java.util.Locale;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ListFragment;
@@ -228,6 +229,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
+            ProgressDialog progress= ProgressDialog.show(getActivity(), "Loading", "Downloading important info from the Internet.", true);;
             while (UserServer.UserInfoArrayList ==null){
 
             }
@@ -241,6 +243,7 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             while (UserServer.returnInfo == null){
 
             }
+            progress.dismiss();
 
 //            Log.i(ARG_SECTION_NUMBER, UserServer.returnInfo._id);
 
