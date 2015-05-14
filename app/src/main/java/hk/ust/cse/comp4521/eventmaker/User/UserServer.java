@@ -27,6 +27,7 @@ public class UserServer {
     }
 
     public static void updateInternalState(){
+
         RestClient.get().getUsers(new Callback<ArrayList<UserInfo>>() {
             @Override
             public void success(ArrayList<UserInfo> userInfos, Response response) {
@@ -42,6 +43,10 @@ public class UserServer {
                 Log.e(TAG, "Retrofit Error");
             }
         });
+
+
+
+
     }
 
     public static void addAUser(UserInfo2 userInfo){
@@ -76,7 +81,7 @@ public class UserServer {
     }
 
     public static UserInfo getAUser(String phone){
-        updateInternalState();
+        //updateInternalState();
         if (UserInfoArrayList == null || phone == null)
             return null;
         if (UserInfoArrayList.size() == 0)

@@ -222,8 +222,27 @@ public class SearchFrag extends ActionBarActivity implements ActionBar.TabListen
             list.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_single_choice, activity));
 
             UserServer userServer = new UserServer();
-            UserInfo user = userServer.getAUser(UserModel.getUserModel().getPhoneNumber());
-            Log.i(ARG_SECTION_NUMBER, user._id);
+            UserServer.updateInternalState();
+//            try {
+//                Thread.currentThread().sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+            while (UserServer.UserInfoArrayList ==null){
+
+            }
+
+            UserInfo user = userServer.getAUser(UserModel.getUserModel().getPhoneNumberFromSP());
+//            try {
+//                Thread.currentThread().sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+            while (UserServer.returnInfo == null){
+
+            }
+
+//            Log.i(ARG_SECTION_NUMBER, UserServer.returnInfo._id);
 
             return rootView;
         }
